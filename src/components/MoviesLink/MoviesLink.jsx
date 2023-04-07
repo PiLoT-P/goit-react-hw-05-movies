@@ -7,7 +7,7 @@ const MoviesToday = ({ movies }) => {
         <ul>
             {movies.map((item) => (
                 <li key={item.id}>
-                    <NavLink to={'/movies/'+item.id} state={locatin}>{item.name || item.original_title}</NavLink>
+                    <NavLink to={'/goit-react-hw-05-movies/movies/'+item.id} state={locatin}>{item.name || item.original_title}</NavLink>
                 </li>
             ))}
         </ul>

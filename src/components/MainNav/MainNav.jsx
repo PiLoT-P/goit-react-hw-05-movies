@@ -10,12 +10,12 @@ const MainNav = () => {
         <nav>
             <ul className={css.list}>
                 <li className={css.item}>
-                    <NavLink className={getACtiveClass} to='/' end>
+                    <NavLink className={getACtiveClass} to='/goit-react-hw-05-movies' end>
                         Home
                     </NavLink>
                 </li>
                 <li className={css.item}>
-                    <NavLink className={getACtiveClass} to='/movies'>
+                    <NavLink className={getACtiveClass} to='/goit-react-hw-05-movies/movies'>
                         Movies
                     </NavLink>
                 </li>
