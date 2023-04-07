@@ -25,8 +25,8 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="/movies" element={<MoviesPage />}/>
-          <Route path="/movies/:movieID" element={<MoviesInformationPage />} >
+          <Route path="movies" element={<MoviesPage />}/>
+          <Route path="movies/:movieID" element={<MoviesInformationPage />} >
             <Route path="cast" element={<MovieCast />} />
             <Route path="reviews" element={<MovieReviews/>} />
           </Route>
