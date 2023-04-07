@@ -33,3 +33,23 @@ export const getTrendingMoviesByName = (name) => {
         })
         .then((res) => res.data);
 }
+
+export const getTrendingMoviesByCast = (id) => {
+    return axios
+        .get('/movie/'+id+'/credits', {
+            params: {
+                api_key: API_KEY,
+            },
+        })
+        .then((res) => res.data);
+}
+
+export const getTrendingMoviesByReviews = (id) => {
+    return axios
+        .get('/movie/'+id+'/reviews', {
+            params: {
+                api_key: API_KEY,
+            },
+        })
+        .then((res) => res.data);
+}

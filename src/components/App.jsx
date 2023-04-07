@@ -4,7 +4,9 @@ import MainNav from "./MainNav/MainNav";
 
 const HomePage = lazy(() => import('../pages/HomePage'));
 const MoviesPage = lazy(() => import('../pages/MoviesPage'));
-const MoviesInformation = lazy(() => import('./MoviesInformation/MoviesInformation'));
+const MoviesInformationPage = lazy(() => import('../pages/MoviesInformationPage'));
+const MovieCast = lazy(() => import('./MovieCast/MovieCast'));
+const MovieReviews = lazy(()=> import('./MovieReviews/MovieReviews'))
 
 const SharedLayout = () => {
   return (
@@ -24,7 +26,10 @@ export const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />}/>
-          <Route path="/movies/:movieID" element={<MoviesInformation/>} />
+          <Route path="/movies/:movieID" element={<MoviesInformationPage />} >
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews/>} />
+          </Route>
         </Route>
       </Routes>
     </>

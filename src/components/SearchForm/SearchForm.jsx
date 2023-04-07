@@ -1,39 +1,29 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import css from './SearchForm.module.css'
 
-const SearchForm = ({ addQuery }) => {
-    const [query, setQuery] = useState('');
-
-    const hendleChangeName = (event) => {
-        setQuery(event.target.value);
-    }
+const SearchForm = () => {
+    const [input, setInput] = useState('');
+    const [, setSearch] = useSearchParams();
 
     const hendleSubmit = (event) => {
         event.preventDefault();
-        if (query.length < 0) {
-            return;
-        } else {
-            addQuery(query);
-            setQuery('');
-        }
+        setSearch({query: input})
     }
 
     return (
-        <form onSubmit={hendleSubmit}>
-                <label >
-                    <p>Movie</p>
-                    <input
-                    type="text"
-                    name="name"
-                    pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                    required
-                    value={query}
-                    onChange={hendleChangeName}
-                    />
-                </label>
-                <button type="submit">
-                    Search Movies
-                </button>
-            </form>
+        <form className={css.form} onSubmit={hendleSubmit}>
+            <input
+            type="text"
+            name="input"
+            placeholder="Search..."
+            value={input}
+            onChange={(event)=> setInput(event.target.value)}
+            />
+            <button type="submit">
+                Search Movies
+            </button>
+        </form>
     );
 }
 

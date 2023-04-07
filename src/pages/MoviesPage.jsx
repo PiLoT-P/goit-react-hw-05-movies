@@ -2,28 +2,24 @@ import { useEffect, useState } from "react";
 import { getTrendingMoviesByName } from "services/MoviesData";
 import SearchForm from "components/SearchForm/SearchForm";
 import MoviesList from "components/MoviesLink/MoviesLink";
+import { useSearchParams } from "react-router-dom";
 
 const MoviesPage = () => {
-    const [query, setQuery] = useState('');
     const [movies, setMovies] = useState([]);
+    const [search] = useSearchParams();
 
-    const addQuery = (name) => {
-        setQuery(name);
-    }
+    const query = search.get('query');
 
     useEffect(() => {
-        if (query.length < 1) {
-            return;
-        } else {
-            getTrendingMoviesByName(query)
-                .then((data) => setMovies(data.results))
-                .catch((err) => console.log(err));
-        }
+        if (!query) return;
+        getTrendingMoviesByName(query)
+            .then((data) => setMovies(data.results))
+            .catch((err) => console.log(err));
     }, [query])
 
     return (
         <>
-            <SearchForm addQuery={addQuery} />
+            <SearchForm />
             <MoviesList movies={movies} />
         </>
     );
